@@ -30,6 +30,12 @@ class Edge<T>{
 	int weight ;
 	Vertex<T> vertex1;
 	Vertex<T> vertex2;
+	public Vertex<T> getVertex1(){
+		return vertex1;
+	}
+	public Vertex<T> getVertex2(){
+		return vertex2;
+	}
 	public Edge(Vertex<T> vertex1,Vertex<T> vertex2 ,boolean isDirected , int weight){
 		this.isDirected=isDirected;
 		this.weight=weight;
@@ -89,6 +95,24 @@ public class Graph<T> {
 			int to = scan.nextInt();
 			adjMatrix[from][to] = 1;
 			addEdge(from,to);
+		}
+	}
+	public void createGraphWithWeights(){
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter number of vertices in graph : ");
+		int n = scan.nextInt();
+		System.out.println("Enter number of edges in graph : ");
+		int e = scan.nextInt();
+		
+		adjMatrix= new int[n][n];
+		
+		System.out.println("Enter edges (from  to)  : ");
+		for(int i=0;i<e;i++){
+			int from = scan.nextInt();
+			int to = scan.nextInt();
+			int weight = scan.nextInt();
+			adjMatrix[from][to] = weight;
+			addEdge(from,to,weight);
 		}
 	}
 	public void printGraph(){
