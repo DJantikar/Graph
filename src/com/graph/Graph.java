@@ -48,6 +48,11 @@ class Edge<T>{
 	public Vertex<T> getVertexForEdge2(int oneVertex ){
 		return this.vertex1.id == oneVertex ? this.vertex2: this.vertex1 ;
 	}
+	@Override
+    public String toString() {
+        return "Edge [isDirected=" + isDirected + ", vertex1=" + vertex1.id
+                + ", vertex2=" + vertex2.id + ", weight=" + weight + "]";
+    }
 }
 
 public class Graph<T> {

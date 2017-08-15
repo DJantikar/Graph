@@ -71,10 +71,11 @@ public class TopologicalSort {
 			System.out.print(stack.poll() + " ");
 	}
 	public  void doDFS(Graph<Integer> g, int vertexId, Set<Integer> visited, Deque<Integer> stack ) {
-		if(visited.contains(vertexId))
-			return;
+		
 		visited.add(vertexId);
 		for(Vertex<Integer> childVertex: g.allVertices.get(vertexId).adjacentVertices){
+			if(visited.contains(childVertex.id))
+				continue;
 			doDFS(g,childVertex.id,visited, stack);
 		}
 		stack.offerFirst(vertexId);
